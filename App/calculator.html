@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo" style="text-align: center; margin-bottom: 20px;">
+            <img src="logo.jpg" alt="Logo" style="max-width: 150px; height: auto;"> <!-- Change this to your logo path -->
+        </div>
+
+        <h1>Fertilizer Predictor / ఎరువుల సూచకుడు</h1>
+        <form id="fertilizerForm">
+            <label for="cropType">Select Crop Type / పంట రకం ఎంపిక చేయండి:</label>
+            <select id="cropType">
+                <option value="corn">Corn / మొక్కజొన్న</option>
+                <option value="wheat">Wheat / గోధుమ</option>
+                <option value="paddy">Paddy / వరి</option>
+                <option value="soybean">Soybean / సోయా బీన్</option>
+                <option value="potato">Potato / ఆలుకు</option>
+                <option value="tomato">Tomato / టమోటా</option>
+            </select>
+            
+            <label for="soilPH">Enter Soil pH / నేల pH నమోదు చేయండి:</label>
+            <input type="number" id="soilPH" step="0.1" min="4.0" max="9.0" required>
+            
+            <label for="landArea">Enter Land Area (in acres) / భూమి విస్తీర్ణం నమోదు చేయండి (ఎకరాల్లో):</label>
+            <input type="number" id="landArea" step="0.01" required>
+            
+            <button type="submit">Get Recommendations / సూచనలను పొందండి</button>
+        </form>
+        
+        <div id="result" style="margin-top: 20px;"></div>
+        <div id="cropInfo" style="margin-top: 20px; white-space: pre-wrap;"></div>
+    </div>
+    
+    <script>
+        const cropDetails = {
+            corn: {
+                info: "Corn is a staple crop and requires full sunlight, adequate water, and nitrogen-rich fertilizer. / మొక్కజొన్న అనేది ఒక ముఖ్యమైన పంట, ఇది పూర్తిగా సూర్యకాంతి, సరైన నీరు మరియు నైట్రోజన్-సంపూర్ణ రసాయనాన్ని అవసరపడుతుంది.",
+                care: "Regularly check for pests and weeds. Ensure proper irrigation, especially during dry spells. / తెగుళ్లు మరియు కలుపు మొక్కల కోసం క్రమం తప్పకుండా తనిఖీ చేయండి. సరైన నీటిపారుదలని నిర్ధారించుకోండి.",
+                fertilizers: {
+                    low: {
+                        nitrogen: "Urea / యూరియా",
+                        phosphorus: "Single Superphosphate / సింగిల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Chloride / పొటాషియం క్లోరైడ్"
+                    },
+                    normal: {
+                        nitrogen: "Ammonium Nitrate / అమెనియం నైట్రేట్",
+                        phosphorus: "DAP (Diammonium Phosphate) / DAP (డయామోనియం ఫాస్ఫేట్)",
+                        potassium: "Potassium Sulfate / పొటాషియం సల్ఫేట్"
+                    },
+                    high: {
+                        nitrogen: "Calcium Nitrate / కాల్షియం నైట్రేట్",
+                        phosphorus: "Bone Meal / బోన్ మీల",
+                        potassium: "Potassium Nitrate / పొటాషియం నైట్రేట్"
+                    }
+                },
+                diseases: {
+                    "Northern Corn Leaf Blight": {
+                        description: "A fungal disease causing elongated grayish-green lesions on leaves. / ఆకులపై పొడిగించబడిన బూడిద-ఆకుపచ్చ గాయాలను కలిగించే శిలీంధ్ర వ్యాధి.",
+                        fertilizer: "Use nitrogen-rich fertilizers to promote healthy growth. / ఆరోగ్యకరమైన పెరుగుదలను ప్రోత్సాహించడానికి నత్రజని అధికంగా ఉండే ఎరువులను ఉపయోగించండి.",
+                        cure: "Apply fungicides at the first sign of symptoms and ensure proper crop rotation. / లక్షణాల మొదటి సంకేతాన్ని చూడగానే ఫంగిసైడ్‌లను ఉపయోగించండి మరియు సరైన పంట పునరావృతిని నిర్ధారించండి."
+                    }
+                }
+            },
+            wheat: {
+                info: "Wheat is a cool-season crop that thrives in well-drained soil and moderate rainfall. / గోధుమ అనేది చల్లని కాలంలో పంట, ఇది బాగా నికరమైన మట్టిలో మరియు సరాసరి వర్షంలో పెరుగుతుంది.",
+                care: "Monitor for diseases and ensure good crop rotation to maintain soil health. / వ్యాధుల కోసం పర్యవేక్షించండి మరియు మట్టిలో ఆరోగ్యాన్ని నిలుపుకోవడానికి మంచి పంట పునరావృతిని నిశ్చయించండి.",
+                fertilizers: {
+                    low: {
+                        nitrogen: "Ammonium Sulfate / అమెనియం సల్ఫేట్",
+                        phosphorus: "Single Superphosphate / సింగిల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Sulfate / పొటాషియం సల్ఫేట్"
+                    },
+                    normal: {
+                        nitrogen: "Urea / యూరియా",
+                        phosphorus: "DAP / DAP (డయామోనియం ఫాస్ఫేట్)",
+                        potassium: "Muriate of Potash / మురియేట్ ఆఫ్ పొటాష్"
+                    },
+                    high: {
+                        nitrogen: "Calcium Nitrate / కాల్షియం నైట్రేట్",
+                        phosphorus: "Bone Meal / బోన్ మీల",
+                        potassium: "Potassium Nitrate / పొటాషియం నైట్రేట్"
+                    }
+                },
+                diseases: {
+                    "Wheat Rust": {
+                        description: "Fungal disease leading to reddish-brown pustules on leaves. / పత్రికలపై ఎరుపు-తగులుతున్న పూతల్ని కలిగి ఉన్న శ్వాసక్రియ.",
+                        fertilizer: "Fertilize with balanced N-P-K fertilizers to improve yield. / పంట పెరుగుదలకు సమతుల్య N-P-K రసాయనాలను ఉపయోగించండి.",
+                        cure: "Use resistant varieties and apply fungicides as needed. / అవసరమైతే ఫంగిసైడ్‌లను ఉపయోగించి మరియు వ్యాధికి సహనంగా ఉన్న జాతులను వాడండి."
+                    }
+                }
+            },
+            paddy: {
+                info: "Paddy requires flooded fields for optimal growth and is sensitive to drought. / వరికి సరైన ఎదుగుదల కోసం వరదలున్న పొలాలు అవసరం మరియు కరువుకు సున్నితంగా ఉంటుంది.",
+                care: "Control water levels carefully and monitor for pests like paddy weevils. / నీటి మట్టాలను జాగ్రత్తగా నియంత్రించండి మరియు వరి ఈవిల్స్ వంటి తెగుళ్లను పర్యవేక్షించండి.",
+                fertilizers: {
+                    low: {
+                        nitrogen: "Urea / యూరియా",
+                        phosphorus: "Single Superphosphate / సింగిల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Sulfate / పొటాషియం సల్ఫేట్"
+                    },
+                    normal: {
+                        nitrogen: "Ammonium Sulfate / అమెనియం సల్ఫేట్",
+                        phosphorus: "Superphosphate / సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Chloride / పొటాషియం క్లోరైడ్"
+                    },
+                    high: {
+                        nitrogen: "Calcium Nitrate / కాల్షియం నైట్రేట్",
+                        phosphorus: "Bone Meal / బోన్ మీల",
+                        potassium: "Potassium Nitrate / పొటాషియం నైట్రేట్"
+                    }
+                },
+                diseases: {
+                    "Paddy Blast": {
+                        description: "Fungal disease that causes diamond-shaped lesions on leaves. / పత్రికలపై సొగసైన గాయాలు కలిగి ఉన్న వ్యాధి.",
+                        fertilizer: "Nitrogen fertilizers are beneficial for growth. / పెరుగుదల కోసం నైట్రోజన్ రసాయనాలు మంచివుంటాయి.",
+                        cure: "Rotate crops and apply fungicides when necessary. / పంటలను పునరావృతం చేయండి మరియు అవసరమైతే ఫంగిసైడ్‌లను ఉపయోగించండి."
+                    }
+                }
+            },
+            soybean: {
+                info: "Soybeans fix nitrogen in the soil and prefer well-drained, loamy soils. / సోయా బీన్ మట్టిలో నైట్రోజన్‌ను సెట్ చేస్తుంది మరియు బాగా నికరించిన, లోయ మట్టిని ఇష్టపడుతుంది.",
+                care: "Rotate with other crops to prevent disease and maintain soil fertility. / వ్యాధిని నివారించడానికి మరియు మట్టిని పండించడం కొనసాగించడానికి ఇతర పంటలతో పునరావృతం చేయండి.",
+                fertilizers: {
+                    low: {
+                        nitrogen: "Ammonium Nitrate / అమెనియం నైట్రేట్",
+                        phosphorus: "Triple Superphosphate / ట్రిపుల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Sulfate / పొటాషియం సల్ఫేట్"
+                    },
+                    normal: {
+                        nitrogen: "Urea / యూరియా",
+                        phosphorus: "Single Superphosphate / సింగిల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Muriate of Potash / మురియేట్ ఆఫ్ పొటాష్"
+                    },
+                    high: {
+                        nitrogen: "Calcium Nitrate / కాల్షియం నైట్రేట్",
+                        phosphorus: "Bone Meal / బోన్ మీల",
+                        potassium: "Potassium Chloride / పొటాషియం క్లోరైడ్"
+                    }
+                },
+                diseases: {
+                    "Soybean Rust": {
+                        description: "Fungal disease causing yellow lesions and leaf drop. / ఎరుపు, పసుపు నల్ల గాయాలను కలిగించు వ్యాధి.",
+                        fertilizer: "Fertilize with balanced N-P-K fertilizers to enhance resistance. / సహనాన్ని పెంచడానికి సమతుల్య N-P-K రసాయనాలను ఉపయోగించండి.",
+                        cure: "Use resistant varieties and apply fungicides as needed. / అవసరమైతే ఫంగిసైడ్‌లను ఉపయోగించి మరియు సహనవంతమైన జాతులను వాడండి."
+                    }
+                }
+            },
+            potato: {
+                info: "Potatoes require loose, well-drained soil and moderate temperatures. / ఆలుకలకు కోటిలు, బాగా నికరించిన మట్టిని మరియు సరాసరి ఉష్ణోగ్రతలు అవసరం.",
+                care: "Hill soil around plants for better growth and check for pests. / మొక్కల చుట్టూ మట్టిని వేయండి మరియు తెగుళ్లను తనిఖీ చేయండి.",
+                fertilizers: {
+                    low: {
+                        nitrogen: "Urea / యూరియా",
+                        phosphorus: "Single Superphosphate / సింగిల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Chloride / పొటాషియం క్లోరైడ్"
+                    },
+                    normal: {
+                        nitrogen: "Ammonium Nitrate / అమెనియం నైట్రేట్",
+                        phosphorus: "Bone Meal / బోన్ మీల",
+                        potassium: "Potassium Sulfate / పొటాషియం సల్ఫేట్"
+                    },
+                    high: {
+                        nitrogen: "Calcium Nitrate / కాల్షియం నైట్రేట్",
+                        phosphorus: "Triple Superphosphate / ట్రిపుల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Muriate of Potash / మురియేట్ ఆఫ్ పొటాష్"
+                    }
+                },
+                diseases: {
+                    "Late Blight": {
+                        description: "Fungal infection causing dark spots on leaves and stems. / ఆకులు మరియు కాండాలలో నల్ల మచ్చలను కలిగి ఉండే శిలీంధ్ర వ్యాధి.",
+                        fertilizer: "Apply nitrogen and potassium fertilizers for better resistance. / మంచి సహనానికి నైట్రోజన్ మరియు పొటాషియం రసాయనాలను ఉపయోగించండి.",
+                        cure: "Use certified seeds and apply fungicides as needed. / ప్రమాణిత విత్తనాలను ఉపయోగించండి మరియు అవసరమైతే ఫంగిసైడ్‌లను ఉపయోగించండి."
+                    }
+                }
+            },
+            tomato: {
+                info: "Tomatoes need full sun and well-drained soil; they are sensitive to overwatering. / టమోటా పూర్తిగా సూర్యకాంతి మరియు బాగా నికరించిన మట్టిని అవసరమవుతుంది; అవి అధిక నీటికి సున్నితంగా ఉంటాయి.",
+                care: "Support plants with stakes or cages and monitor for pests. / మొక్కలను స్టేక్స్ లేదా కేజీలతో మద్దతు ఇవ్వండి మరియు తెగుళ్లను పర్యవేక్షించండి.",
+                fertilizers: {
+                    low: {
+                        nitrogen: "Urea / యూరియా",
+                        phosphorus: "Bone Meal / బోన్ మీల",
+                        potassium: "Potassium Sulfate / పొటాషియం సల్ఫేట్"
+                    },
+                    normal: {
+                        nitrogen: "Ammonium Nitrate / అమెనియం నైట్రేట్",
+                        phosphorus: "DAP / DAP (డయామోనియం ఫాస్ఫేట్)",
+                        potassium: "Potassium Chloride / పొటాషియం క్లోరైడ్"
+                    },
+                    high: {
+                        nitrogen: "Calcium Nitrate / కాల్షియం నైట్రేట్",
+                        phosphorus: "Triple Superphosphate / ట్రిపుల్ సూపర్ ఫాస్ఫేట్",
+                        potassium: "Potassium Nitrate / పొటాషియం నైట్రేట్"
+                    }
+                },
+                diseases: {
+                    "Blight": {
+                        description: "A fungal disease causing wilting and dark spots on leaves. / ఆకులపై కుంభంలో ఉన్న నల్ల మచ్చల్ని కలిగి ఉండే వ్యాధి.",
+                        fertilizer: "Use balanced fertilizers for overall health. / మొత్తం ఆరోగ్యానికి సమతుల్య ఎరువులను ఉపయోగించండి.",
+                        cure: "Ensure good airflow around plants and apply fungicides as needed. / మొక్కల చుట్టూ మంచి గాలి ప్రవాహాన్ని నిర్ధారించండి మరియు అవసరమైతే ఫంగిసైడ్‌లను ఉపయోగించండి."
+                    }
+                }
+            }
+        };
+
+        // Fertilizer recommendations based on soil pH levels
+        const fertilizerSuggestions = {
+            low: "Use lime to increase pH, or add balanced fertilizers with micronutrients. / pH పెరిగేందుకు చప్పుడు పెంచండి లేదా సూక్ష్మపోషకాలతో సమతుల్య రసాయనాలను చేర్చండి.",
+            normal: "Use balanced fertilizers to maintain soil health. / మట్టిలో ఆరోగ్యాన్ని కొనసాగించడానికి సమతుల్య ఎరువులను ఉపయోగించండి.",
+            high: "Use sulfur or ammonium-based fertilizers to lower pH levels. / pH స్థాయిని తగ్గించడానికి నిష్క్రియ లేదా అమ్‌మోనియం ఆధారిత ఎరువులను ఉపయోగించండి."
+        };
+
+        document.getElementById('fertilizerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const cropType = document.getElementById('cropType').value;
+            const soilPH = parseFloat(document.getElementById('soilPH').value);
+            const landArea = parseFloat(document.getElementById('landArea').value);
+
+            // Display crop information
+            const cropData = cropDetails[cropType];
+            document.getElementById('result').innerHTML = `
+                <h2>${cropData.info}</h2>
+                <h3>Care Instructions / చూసుకోవాల్సిన సూచనలు:</h3>
+                <p>${cropData.care}</p>
+            `;
+
+            // Determine fertilizer suggestion based on pH level
+            let pHRecommendation;
+            let pHFertilizers;
+
+            if (soilPH < 6.0) {
+                pHRecommendation = fertilizerSuggestions.low;
+                pHFertilizers = cropData.fertilizers.low;
+            } else if (soilPH >= 6.0 && soilPH <= 7.5) {
+                pHRecommendation = fertilizerSuggestions.normal;
+                pHFertilizers = cropData.fertilizers.normal;
+            } else {
+                pHRecommendation = fertilizerSuggestions.high;
+                pHFertilizers = cropData.fertilizers.high;
+            }
+
+            // Display pH recommendations
+            document.getElementById('result').innerHTML += `
+                <h3>Fertilizer Recommendation Based on Soil pH / నేల pH ఆధారంగా ఎరువుల సూచన:</h3>
+                <p>${pHRecommendation}</p>
+            `;
+
+            // Display fertilizer suggestions for the selected crop
+            let fertilizerInfo = `<h3>Recommended Fertilizers for ${cropType} / ${cropType} కోసం సిఫారసు చేసిన ఎరువులు:</h3><ul>`;
+            for (const type in pHFertilizers) {
+                fertilizerInfo += `<li><strong>${type.charAt(0).toUpperCase() + type.slice(1)}:</strong> ${pHFertilizers[type]}</li>`;
+            }
+            fertilizerInfo += "</ul>";
+            document.getElementById('result').innerHTML += fertilizerInfo;
+
+            // Display disease information
+            let diseasesInfo = "<h3>Diseases and Recommendations / వ్యాధులు మరియు సూచనలు:</h3><ul>";
+            for (const disease in cropData.diseases) {
+                const diseaseData = cropData.diseases[disease];
+                diseasesInfo += `
+                    <li>
+                        <strong>${disease}</strong>: ${diseaseData.description} <br>
+                        Fertilizer Suggestion: ${diseaseData.fertilizer} <br>
+                        Cure: ${diseaseData.cure}
+                    </li>
+                `;
+            }
+            diseasesInfo += "</ul>";
+            document.getElementById('cropInfo').innerHTML = diseasesInfo;
+        });
+    </script>
+</body>
+</html>

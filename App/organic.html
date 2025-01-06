@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Organic Farming Practices</title>
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          background-color: #4CAF50;
+          padding: 10px;
+          color: white;
+          text-align: center;
+      }
+      section {
+          margin: 20px 0;
+          padding: 20px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      select {
+          padding: 10px;
+          font-size: 16px;
+          width: 100%;
+          margin-bottom: 20px;
+      }
+      .crop-details {
+          margin-top: 20px;
+          padding: 10px;
+          border: 1px solid #4CAF50;
+          border-radius: 5px;
+          display: none; /* Hidden by default */
+      }
+  </style>
+  <script>
+      function showDetails() {
+          const cropDetails = document.querySelectorAll('.crop-details');
+          cropDetails.forEach(detail => detail.style.display = 'none'); // Hide all details
+         
+          const selectedCrop = document.getElementById('cropSelect').value;
+          if (selectedCrop) {
+              document.getElementById(selectedCrop + '-details').style.display = 'block'; // Show selected crop details
+          }
+      }
+  </script>
+</head>
+<body>
+    <header>
+        <img src="organic-icon.jpg" alt="Organic Farming Practices" style="max-width: 100px; height: auto;">
+        <h1>Organic Farming Practices</h1>
+    </header>
+    <section>
+        <p>Organic farming emphasizes the use of natural inputs and practices to enhance soil health and crop productivity.</p>
+ 
+        <h2>Select a Crop to See Organic Fertilizer Details</h2>
+        <select id="cropSelect" onchange="showDetails()">
+            <option value="">Select a crop...</option>
+            <option value="maize">Maize</option>
+            <option value="rice">Rice</option>
+            <option value="wheat">Wheat</option>
+            <option value="soybean">Soybean</option>
+            <option value="potato">Potato</option>
+            <option value="tomato">Tomato</option>
+            <option value="carrot">Carrot</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="spinach">Spinach</option>
+            <option value="beet">Beetroot</option>
+            <option value="bellpepper">Bell Pepper</option>
+        </select>
+ 
+        <div id="maize-details" class="crop-details">
+            <h3>Maize</h3>
+            <p>Rotate with legumes such as soybeans to enhance nitrogen levels naturally.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Compost / కంపోస్ట్</p>
+            <p><strong>Application Frequency:</strong> Every 4-6 weeks / ప్రతి 4-6 వారాలలో</p>
+        </div>
+ 
+        <div id="rice-details" class="crop-details">
+            <h3>Rice</h3>
+            <p>Alternating rice with dry crops like mustard to manage water effectively.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Green Manure / గ్రీన్ మన్యూర్</p>
+            <p><strong>Application Frequency:</strong> Before planting and every 3-4 weeks / విత్తనం వేయడానికి ముందు మరియు ప్రతి 3-4 వారాలలో</p>
+        </div>
+ 
+        <div id="wheat-details" class="crop-details">
+            <h3>Wheat</h3>
+            <p>Rotate with pulses like chickpeas to enhance soil nutrients.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Bone Meal / బోన్ మీల</p>
+            <p><strong>Application Frequency:</strong> Every 6-8 weeks / ప్రతి 6-8 వారాలలో</p>
+        </div>
+ 
+        <div id="soybean-details" class="crop-details">
+            <h3>Soybean</h3>
+            <p>Follow with corn to utilize nitrogen fixed by the soybeans.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Kelp Meal / కెల్ప్ మీల</p>
+            <p><strong>Application Frequency:</strong> Every 4-5 weeks / ప్రతి 4-5 వారాలలో</p>
+        </div>
+ 
+        <div id="potato-details" class="crop-details">
+            <h3>Potato</h3>
+            <p>Rotate with cereals like barley to reduce disease risks.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Compost / కంపోస్ట్</p>
+            <p><strong>Application Frequency:</strong> Every 4-6 weeks / ప్రతి 4-6 వారాలలో</p>
+        </div>
+ 
+        <div id="tomato-details" class="crop-details">
+            <h3>Tomato</h3>
+            <p>Avoid planting after other nightshades to minimize pest pressure.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Compost / కంపోస్ట్</p>
+            <p><strong>Application Frequency:</strong> Every 4-6 weeks / ప్రతి 4-6 వారాలలో</p>
+        </div>
+ 
+        <div id="carrot-details" class="crop-details">
+            <h3>Carrot</h3>
+            <p>Rotate with onions to deter pests and diseases.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Fish Emulsion / ఫిష్ ఎమల్షన్</p>
+            <p><strong>Application Frequency:</strong> Every 3-4 weeks / ప్రతి 3-4 వారాలలో</p>
+        </div>
+ 
+        <div id="cabbage-details" class="crop-details">
+            <h3>Cabbage</h3>
+            <p>Follow with legumes to replenish soil nutrients.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Compost Tea / కంపోస్ట్ టీ</p>
+            <p><strong>Application Frequency:</strong> Every 4-6 weeks / ప్రతి 4-6 వారాలలో</p>
+        </div>
+ 
+        <div id="spinach-details" class="crop-details">
+            <h3>Spinach</h3>
+            <p>Rotate with tomatoes to improve soil health.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Organic Mulch / ఆర్గానిక్ ముల్చ్</p>
+            <p><strong>Application Frequency:</strong> Every 3-4 weeks / ప్రతి 3-4 వారాలలో</p>
+        </div>
+ 
+        <div id="beet-details" class="crop-details">
+            <h3>Beetroot</h3>
+            <p>Rotate with legumes to improve soil nitrogen.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Bone Meal / బోన్ మీల</p>
+            <p><strong>Application Frequency:</strong> Every 6-8 weeks / ప్రతి 6-8 వారాలలో</p>
+        </div>
+ 
+        <div id="bellpepper-details" class="crop-details">
+            <h3>Bell Pepper</h3>
+            <p>Avoid planting after other nightshades to minimize pest pressure.</p>
+            <p><strong>Recommended Organic Fertilizer:</strong> Compost / కంపోస్ట్</p>
+            <p><strong>Application Frequency:</strong> Every 4-6 weeks / ప్రతి 4-6 వారాలలో</p>
+        </div>
+ 
+        <p>Implementing organic farming practices can lead to improved soil health and sustainable crop production.</p>
+        <a href="header.html">Back to Home</a>
+    </section>
+</body>
+</html>

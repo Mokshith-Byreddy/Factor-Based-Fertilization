@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fertilizer Guide for Farmers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 0;
+          text-align: center;
+      }
+      nav ul {
+          list-style-type: none;
+          padding: 0;
+      }
+      nav ul li {
+          display: inline;
+          margin: 0 15px;
+      }
+      nav ul li a {
+          color: white;
+          text-decoration: none;
+      }
+      .search-container {
+          text-align: center;
+          margin: 20px 0;
+      }
+      .search-container input[type="text"] {
+          width: 300px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+      }
+      .search-container button {
+          padding: 10px 15px;
+          background-color: #2980b9;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-left: 10px;
+      }
+      .search-container button:hover {
+          background-color: #1c5980;
+      }
+      section {
+          margin: 50px 0;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      .quick-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .quick-links-item {
+          width: 30%; /* Adjusted width for three items per row */
+          text-align: center;
+          margin-bottom: 20px;
+          margin-right: 10px;
+          backdrop-filter: blur(10px);
+          border-radius: 10px;
+          transition: transform 0.3s ease; /* Smooth transition for item hover effect */
+      }
+      .quick-links-item:hover {
+          transform: translateY(-5px); /* Moves the item up by 5 pixels */
+      }
+      .quick-links-item img {
+          width: 180px; /* Larger image size */
+          height: auto;
+          display: block;
+          margin: 0 auto 10px; /* Center image */
+          transition: transform 0.3s ease; /* Smooth transition for image scaling */
+      }
+      .quick-links-item:hover img {
+          transform: scale(1.1); /* Scales the image to 110% on hover */
+      }
+      .quick-links-item a {
+          display: block;
+          margin-top: 10px;
+          color: #2980b9;
+          text-decoration: none;
+          font-weight: bold;
+      }
+      .quick-links-item a:hover {
+          color: #4CAF50; /* Changes text color on hover */
+      }
+      #results {
+          margin-top: 20px;
+          padding: 10px;
+          background-color: #e9e9e9;
+          border-radius: 8px;
+          display: none;
+      }
+      .result-item {
+          margin-bottom: 15px;
+      }
+      .result-item img {
+          width: 100px;
+          vertical-align: middle;
+          margin-right: 10px;
+      }
+      /* Contact section styles */
+      .contact-section {
+          margin-top: 50px;
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .contact-section h2 {
+          margin-bottom: 20px;
+      }
+      .feedback-form {
+          display: flex;
+          flex-direction: column;
+      }
+      .feedback-form input[type="text"], .feedback-form input[type="email"], .feedback-form textarea {
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+      }
+      .feedback-form button {
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+      .feedback-form button:hover {
+          background-color: #45a049;
+      }
+      /* Popup styles */
+      .popup {
+          display: none;
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          padding: 20px;
+          border: 1px solid #4CAF50;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+      }
+      .popup p {
+          margin: 0;
+          color: #4CAF50;
+      }
+      .popup button {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 10px;
+          cursor: pointer;
+      }
+      .popup button:hover {
+          background-color: #45a049;
+      }
+      .quick-links-item a {
+          color: white;
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Website Logo">
+      <h1>Fertilizer Guide for Farmers</h1>
+    </div>
+    <nav>
+      <ul>
+       
+        <li><a href="soil-guide.html">Soil & Fertilizer Guide</a></li>
+        <li><a href="crop-guide.html">Crop-Specific Fertilization</a></li>
+        <li><a href="calculator.html">Fertilizer Calculator</a></li>
+        <li><a href="sustainable.html">Sustainable Practices</a></li>
+        <li><a href="agriculture-guide.html">Agriculture Guide</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for requirements...">
+    <button type="button" onclick="search()">Search</button>
+  </div>
+ 
+  <!-- Search results section -->
+  <section id="results">
+    <h2>Search Results</h2>
+    <div id="resultContent"></div>
+  </section>
+ 
+  <section>
+    <h2>Quick Links</h2>
+    <div class="quick-links">
+      <div class="quick-links-item">
+        <a href="soil-health.html">
+          <img src="soil-health-icon.png" alt="Soil Health Icon">
+          Soil Health Indicators
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="pest-management.html">
+          <img src="pest-management-icon.png" alt="Pest Management Icon">
+          Pest and Disease Management
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="water-management.html">
+          <img src="water-management-icon.png" alt="Water Management Icon">
+          Water Management Techniques
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="nutrient-management.html">
+          <img src="nutrient-management-icon.png" alt="Nutrient Management Icon">
+          Nutrient Management Plans
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="seasonal-calendar.html">
+          <img src="seasonal-calendar-icon.png" alt="Seasonal Calendar Icon">
+          Seasonal Calendar
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="economic-benefits.html">
+          <img src="economic-benefits-icon.png" alt="Economic Benefits Icon">
+          Economic Benefits
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="crop-rotation.html">
+          <img src="crop-rotation-icon.png" alt="Crop Rotation Icon">
+          Crop Rotation Benefits
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="organic.html">
+          <img src="organic-icon.jpg" alt="Organic Materials Icon">
+          Organic Materials
+        </a>
+      </div>
+      <div class="quick-links-item">
+        <a href="crop-protection.html">
+          <img src="crop-protection.jpg" alt="Crop Protection Icon">
+          Crop Protection
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <form class="feedback-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Feedback</button>
+    </form>
+  </section>
+
+  <div class="popup" id="popup">
+      <p>Thank you for your feedback!</p>
+      <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    function search() {
+      const query = document.getElementById('searchInput').value;
+      const resultContent = document.getElementById('resultContent');
+      resultContent.innerHTML = ''; // Clear previous results
+
+      // Example search results (replace with actual logic)
+      if (query) {
+        resultContent.innerHTML = '<div class="result-item">Result for: ' + query + '</div>';
+        document.getElementById('results').style.display = 'block'; // Show results section
+      }
+    }
+
+    document.querySelector('.feedback-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      document.getElementById('popup').style.display = 'block'; // Show popup
+    });
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none'; // Hide popup
+    }
+  </script>
+</body>
+</html>

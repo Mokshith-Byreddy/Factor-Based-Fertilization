@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pest and Disease Management</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          display: flex; /* Use flexbox for alignment */
+          align-items: center; /* Center items vertically */
+          justify-content: center; /* Center items horizontally */
+          background-color: #4CAF50; /* Green background */
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+      h1 {
+          color: white;
+          margin-left: 20px; /* Space between image and text */
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      section {
+          margin-bottom: 20px;
+          padding: 15px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      a {
+          color: #2980b9;
+          text-decoration: underline;
+      }
+      a:hover {
+          text-decoration: none;
+      }
+      img {
+          max-width: 100px; /* Adjust image size as needed */
+          height: auto;
+      }
+      ul {
+          list-style-type: none;
+          padding-left: 0;
+      }
+      li {
+          margin: 5px 0;
+      }
+      /* Dropdown styles */
+      .dropdown-container {
+          margin-top: 20px;
+      }
+      .dropdown {
+          width: 100%;
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          font-size: 16px;
+      }
+      .plant-details {
+          margin-top: 10px;
+          padding: 10px;
+          background-color: #e9e9e9;
+          border-radius: 4px;
+          display: none; /* Hide by default */
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="pest-management-icon.png" alt="Pest and Disease Management" style="max-width: 100px; height: auto;">
+    <h1>Pest and Disease Management</h1>
+  </header>
+
+  <section>
+    <h2>Understanding Pest Management</h2>
+    <p>Implement integrated pest management (IPM) strategies, such as crop rotation, use of resistant varieties, and biological controls to manage pests and diseases effectively. Monitor fields regularly to identify pest populations early and take action when thresholds are reached.</p>
+  </section>
+
+  <section>
+    <h2>Common Pests and Recommended Management Strategies</h2>
+    
+    <h3>1. Aphids</h3>
+    <p>Aphids are small sap-sucking insects that can cause significant damage to crops. To manage aphids:</p>
+    <ul>
+      <li>Use insecticidal soap or neem oil as a treatment.</li>
+      <li>Encourage natural predators like ladybugs.</li>
+      <li>Practice crop rotation to reduce infestations.</li>
+    </ul>
+
+    <h3>2. Whiteflies</h3>
+    <p>Whiteflies are tiny, white-winged insects that feed on plant sap. To control whiteflies:</p>
+    <ul>
+      <li>Use yellow sticky traps to monitor populations.</li>
+      <li>Apply insecticidal soap or horticultural oil.</li>
+      <li>Introduce beneficial insects, such as parasitic wasps.</li>
+    </ul>
+
+    <h3>3. Caterpillars</h3>
+    <p>Caterpillars can be destructive, feeding on leaves and stems. To manage caterpillars:</p>
+    <ul>
+      <li>Handpick caterpillars from plants.</li>
+      <li>Use Bacillus thuringiensis (Bt) as a biological control.</li>
+      <li>Encourage birds to feed on caterpillars.</li>
+    </ul>
+
+    <h3>4. Fungal Diseases</h3>
+    <p>Fungal diseases can affect plant health significantly. To manage fungal diseases:</p>
+    <ul>
+      <li>Use fungicides as a preventative measure.</li>
+      <li>Practice good crop rotation and sanitation.</li>
+      <li>Improve air circulation around plants to reduce humidity.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Best Practices for Effective Pest Management</h2>
+    <ul>
+      <li>Regularly monitor plants for early signs of pests.</li>
+      <li>Maintain healthy soil and crop diversity to enhance resilience.</li>
+      <li>Use a combination of cultural, biological, and chemical methods.</li>
+      <li>Educate yourself and others about pest identification and management.</li>
+    </ul>
+  </section>
+
+  <section class="dropdown-container">
+    <h2>Select a Plant and Soil Type</h2>
+    <label for="plantSelect">Select a Plant:</label>
+    <select id="plantSelect" class="dropdown" onchange="showPlantDetails()">
+      <option value="">-- Select a Plant --</option>
+      <option value="tomato">Tomato</option>
+      <option value="potato">Potato</option>
+      <option value="wheat">Wheat</option>
+      <option value="corn">Corn</option>
+      <option value="rice">Rice</option>
+      <option value="carrot">Carrot</option>
+      <option value="cabbage">Cabbage</option>
+      <option value="onion">Onion</option>
+      <option value="spinach">Spinach</option>
+      <option value="pepper">Bell Pepper</option>
+      <option value="strawberry">Strawberry</option>
+      <option value="blueberry">Blueberry</option>
+      <option value="garlic">Garlic</option>
+    </select>
+
+    <label for="soilSelect">Select Soil Type:</label>
+    <select id="soilSelect" class="dropdown" onchange="showPlantDetails()">
+      <option value="">-- Select Soil Type --</option>
+      <option value="sandy">Sandy Soil</option>
+      <option value="clay">Clay Soil</option>
+      <option value="loamy">Loamy Soil</option>
+      <option value="silt">Silt Soil</option>
+      <option value="peat">Peaty Soil</option>
+    </select>
+
+    <div id="plantDetails" class="plant-details"></div>
+  </section>
+
+  <section>
+    <a href="header.html">Back to Home</a>
+  </section>
+
+  <script>
+    function showPlantDetails() {
+      const plantSelect = document.getElementById('plantSelect');
+      const soilSelect = document.getElementById('soilSelect');
+      const detailsDiv = document.getElementById('plantDetails');
+      const selectedPlant = plantSelect.value;
+      const selectedSoil = soilSelect.value;
+
+      const plantInfo = {
+        tomato: {
+          pests: "Aphids, Whiteflies",
+          precautions: "Use neem oil or insecticidal soap, encourage natural predators, and practice crop rotation.",
+          fertilizers: "Balanced N-P-K fertilizers (Nitrogen, Phosphorus, Potassium)."
+        },
+        potato: {
+          pests: "Colorado Potato Beetle, Late Blight",
+          precautions: "Monitor regularly, use resistant varieties, and rotate crops.",
+          fertilizers: "High potassium fertilizers to promote tuber growth."
+        },
+        wheat: {
+          pests: "Aphids, Rust Diseases",
+          precautions: "Use resistant varieties and practice crop rotation.",
+          fertilizers: "Balanced fertilizers with adequate nitrogen."
+        },
+        corn: {
+          pests: "Corn Earworm, European Corn Borer",
+          precautions: "Plant resistant varieties and use pheromone traps.",
+          fertilizers: "High nitrogen fertilizers to support growth."
+        },
+        rice: {
+          pests: "Stem Borers, Rice Weevils",
+          precautions: "Use resistant varieties and implement water management.",
+          fertilizers: "Balanced fertilizers, especially nitrogen for growth."
+        },
+        carrot: {
+          pests: "Carrot Flies, Aphids",
+          precautions: "Use row covers and practice crop rotation.",
+          fertilizers: "Low-nitrogen fertilizers to promote root development."
+        },
+        cabbage: {
+          pests: "Cabbage Worms, Aphids",
+          precautions: "Use insecticidal soap and encourage beneficial insects.",
+          fertilizers: "Balanced fertilizers with emphasis on potassium."
+        },
+        onion: {
+          pests: "Onion Maggots, Thrips",
+          precautions: "Use yellow sticky traps and monitor regularly.",
+          fertilizers: "High nitrogen fertilizers to promote bulb growth."
+        },
+        spinach: {
+          pests: "Leaf Miners, Aphids",
+          precautions: "Use row covers and monitor regularly.",
+          fertilizers: "Balanced fertilizers to support leaf growth."
+        },
+        pepper: {
+          pests: "Aphids, Thrips",
+          precautions: "Use insecticidal soap and monitor plants closely.",
+          fertilizers: "Balanced fertilizers for fruit development."
+        },
+        strawberry: {
+          pests: "Spider Mites, Aphids",
+          precautions: "Maintain good air circulation and monitor closely.",
+          fertilizers: "Balanced fertilizers to promote fruiting."
+        },
+        blueberry: {
+          pests: "Blueberry Maggots, Birds",
+          precautions: "Use netting to protect from birds and monitor for pests.",
+          fertilizers: "Acidic fertilizers to maintain soil pH."
+        },
+        garlic: {
+          pests: "Onion Maggots, Aphids",
+          precautions: "Rotate crops and monitor for infestations.",
+          fertilizers: "Balanced fertilizers with emphasis on phosphorus."
+        }
+      };
+
+      // Show relevant information based on selections
+      if (selectedPlant && selectedSoil) {
+        const info = plantInfo[selectedPlant];
+        detailsDiv.innerHTML = `
+          <h3>${selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1)} Information</h3>
+          <p><strong>Pests:</strong> ${info.pests}</p>
+          <p><strong>Precautions:</strong> ${info.precautions}</p>
+          <p><strong>Fertilizers:</strong> ${info.fertilizers}</p>
+        `;
+        detailsDiv.style.display = 'block'; // Show details
+      } else {
+        detailsDiv.style.display = 'none'; // Hide details if not selected
+      }
+    }
+  </script>
+</body>
+</html>

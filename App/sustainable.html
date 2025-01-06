@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sustainable Fertilization Practices</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f9;
+        color: #333;
+    }
+    h2 {
+        color: #4CAF50;
+        text-align: center;
+    }
+    h3 {
+        color: #007BFF; /* Blue color for crop names */
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        text-align: center; /* Center align crop names */
+    }
+    .crop-details {
+        display: none; /* Hide details by default */
+        margin: 20px auto; /* Center the details section */
+        padding: 20px;
+        background: #e9ffe9;
+        border: 1px solid #4CAF50;
+        border-radius: 5px;
+        color: #333; /* Color for details text */
+        max-width: 600px; /* Maximum width for the details */
+        text-align: left; /* Left align text inside the details */
+    }
+    .crop-details p {
+        margin: 5px 0;
+    }
+    .dropdown {
+        text-align: center; /* Center align dropdown */
+        margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <section class="sustainable">
+    <h2>Sustainable Fertilization Practices</h2>
+    <p style="text-align: center;">Learn how to maintain soil fertility while preserving the environment.</p>
+    
+    <div class="dropdown">
+      <label for="cropSelect">Select a Crop:</label>
+      <select id="cropSelect" onchange="showCropDetails(this.value)">
+        <option value="">-- Select a Crop --</option>
+        <option value="maize">Maize</option>
+        <option value="rice">Rice</option>
+        <option value="wheat">Wheat</option>
+        <option value="soybean">Soybean</option>
+        <option value="potato">Potato</option>
+        <option value="tomato">Tomato</option>
+        <option value="barley">Barley</option>
+        <option value="oats">Oats</option>
+        <option value="sorghum">Sorghum</option>
+        <option value="cotton">Cotton</option>
+        <option value="peanut">Peanut</option>
+        <option value="chickpea">Chickpea</option>
+      </select>
+    </div>
+
+    <div id="maizeDetails" class="crop-details">
+      <p>Use cover crops and conservation tillage to enhance soil health.</p>
+      <p><strong>Harvest Season:</strong> July - August</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Loamy to sandy soil</p>
+      <p><strong>Fertilizers:</strong> Nitrogen-rich fertilizers</p>
+      <p><strong>Pest Management:</strong> Integrated Pest Management (IPM) practices</p>
+      <p><strong>Nutrient Management:</strong> Regular soil testing and application of organic matter. Use cover crops to enhance soil fertility. Incorporate crop residues to improve soil organic matter. Apply micronutrients as needed to prevent deficiencies.</p>
+    </div>
+   
+    <div id="riceDetails" class="crop-details">
+      <p>Implement alternate wetting and drying (AWD) irrigation to conserve water.</p>
+      <p><strong>Harvest Season:</strong> September - October</p>
+      <p><strong>Harvest Duration:</strong> 1-2 months</p>
+      <p><strong>Soil Type:</strong> Clayey soil</p>
+      <p><strong>Fertilizers:</strong> Balanced NPK fertilizers</p>
+      <p><strong>Pest Management:</strong> Biological control and resistant varieties</p>
+      <p><strong>Nutrient Management:</strong> Use of green manures and organic fertilizers. Implement crop rotation with legumes to enhance nitrogen fixation. Monitor nutrient levels regularly to adjust fertilization strategies.</p>
+    </div>
+   
+    <div id="wheatDetails" class="crop-details">
+      <p>Rotate with legumes and use organic amendments for better soil fertility.</p>
+      <p><strong>Harvest Season:</strong> March - April</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Well-drained loamy soil</p>
+      <p><strong>Fertilizers:</strong> Phosphate and potash fertilizers</p>
+      <p><strong>Pest Management:</strong> Crop rotation and resistant varieties</p>
+      <p><strong>Nutrient Management:</strong> Soil testing and integrated nutrient management. Utilize compost and organic fertilizers to improve soil health. Implement cover cropping to maintain nutrient levels.</p>
+    </div>
+   
+    <div id="soybeanDetails" class="crop-details">
+      <p>Intercropping and mulching help improve soil nutrients and moisture retention.</p>
+      <p><strong>Harvest Season:</strong> September - October</p>
+      <p><strong>Harvest Duration:</strong> 1 month</p>
+      <p><strong>Soil Type:</strong> Well-drained sandy loam</p>
+      <p><strong>Fertilizers:</strong> Low nitrogen; use of phosphorus fertilizers</p>
+      <p><strong>Pest Management:</strong> Cultural controls and biological control</p>
+      <p><strong>Nutrient Management:</strong> Use of cover crops and crop rotation. Apply micronutrients to address specific deficiencies. Regular soil amendments can improve nutrient availability.</p>
+    </div>
+   
+    <div id="potatoDetails" class="crop-details">
+      <p>Utilize organic fertilizers and pest-resistant varieties for sustainable growth.</p>
+      <p><strong>Harvest Season:</strong> June - July</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Sandy loam or silty soil</p>
+      <p><strong>Fertilizers:</strong> Nitrogen and potassium fertilizers</p>
+      <p><strong>Pest Management:</strong> Crop rotation and resistant varieties</p>
+      <p><strong>Nutrient Management:</strong> Regular soil testing. Incorporate organic matter to improve soil structure and nutrient retention. Utilize compost and well-rotted manure as natural fertilizers.</p>
+    </div>
+   
+    <div id="tomatoDetails" class="crop-details">
+      <p>Employ drip irrigation and companion planting to manage pests naturally.</p>
+      <p><strong>Harvest Season:</strong> June - July</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Well-drained loamy soil</p>
+      <p><strong>Fertilizers:</strong> Balanced NPK fertilizers</p>
+      <p><strong>Pest Management:</strong> Use of traps and biological controls</p>
+      <p><strong>Nutrient Management:</strong> Use of compost and organic fertilizers. Regularly monitor soil moisture and nutrient levels. Incorporate green manures to improve soil health.</p>
+    </div>
+   
+    <div id="barleyDetails" class="crop-details">
+      <p>Practice reduced tillage and nutrient recycling for improved soil health.</p>
+      <p><strong>Harvest Season:</strong> May - June</p>
+      <p><strong>Harvest Duration:</strong> 1 month</p>
+      <p><strong>Soil Type:</strong> Well-drained sandy loam</p>
+      <p><strong>Fertilizers:</strong> Nitrogen fertilizers</p>
+      <p><strong>Pest Management:</strong> Regular monitoring and crop rotation</p>
+      <p><strong>Nutrient Management:</strong> Organic matter incorporation. Regularly test soil and amend accordingly. Utilize cover crops to improve soil fertility.</p>
+    </div>
+   
+    <div id="oatsDetails" class="crop-details">
+      <p>Engage in green manuring and soil testing to optimize nutrient management.</p>
+      <p><strong>Harvest Season:</strong> May - June</p>
+      <p><strong>Harvest Duration:</strong> 1 month</p>
+      <p><strong>Soil Type:</strong> Fertile, well-drained soil</p>
+      <p><strong>Fertilizers:</strong> Nitrogen-rich fertilizers</p>
+      <p><strong>Pest Management:</strong> Cultural practices and crop rotation</p>
+      <p><strong>Nutrient Management:</strong> Regular soil testing. Incorporate green manures and cover crops to maintain soil health. Use organic fertilizers to enhance nutrient levels.</p>
+    </div>
+   
+    <div id="sorghumDetails" class="crop-details">
+      <p>Implement water management and intercropping for enhanced resilience.</p>
+      <p><strong>Harvest Season:</strong> October - November</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Sandy loam or clay soil</p>
+      <p><strong>Fertilizers:</strong> Balanced fertilizers</p>
+      <p><strong>Pest Management:</strong> Resistant varieties and proper sanitation</p>
+      <p><strong>Nutrient Management:</strong> Soil testing and regular amendments. Incorporate compost and organic matter. Practice crop rotation with legumes for better nutrient balance.</p>
+    </div>
+   
+    <div id="cottonDetails" class="crop-details">
+      <p>Rotate crops and use biological pest control to reduce chemical use.</p>
+      <p><strong>Harvest Season:</strong> August - September</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Well-drained sandy loam</p>
+      <p><strong>Fertilizers:</strong> Nitrogen and potassium fertilizers</p>
+      <p><strong>Pest Management:</strong> Use of beneficial insects</p>
+      <p><strong>Nutrient Management:</strong> Regular soil testing. Incorporate cover crops to enhance soil fertility. Apply organic matter to improve soil health.</p>
+    </div>
+   
+    <div id="peanutDetails" class="crop-details">
+      <p>Incorporate organic matter and intercropping for improved soil health.</p>
+      <p><strong>Harvest Season:</strong> August - September</p>
+      <p><strong>Harvest Duration:</strong> 1 month</p>
+      <p><strong>Soil Type:</strong> Sandy loam</p>
+      <p><strong>Fertilizers:</strong> Moderate potassium fertilizers</p>
+      <p><strong>Pest Management:</strong> Crop rotation and resistant varieties</p>
+      <p><strong>Nutrient Management:</strong> Regular soil amendments. Use of green manures to improve soil fertility. Incorporate organic matter to enhance nutrient availability.</p>
+    </div>
+   
+    <div id="chickpeaDetails" class="crop-details">
+      <p>Reduce fertilizer reliance and promote crop diversity for sustainability.</p>
+      <p><strong>Harvest Season:</strong> June - July</p>
+      <p><strong>Harvest Duration:</strong> 2 months</p>
+      <p><strong>Soil Type:</strong> Well-drained sandy loam</p>
+      <p><strong>Fertilizers:</strong> Low nitrogen fertilizers</p>
+      <p><strong>Pest Management:</strong> Use of resistant varieties</p>
+      <p><strong>Nutrient Management:</strong> Crop rotation and soil testing. Incorporate organic matter to improve soil structure. Apply micronutrients as needed to prevent deficiencies.</p>
+    </div>
+  </section>
+
+  <script>
+    function showCropDetails(selectedCrop) {
+      // Hide all crop details
+      const details = document.querySelectorAll('.crop-details');
+      details.forEach(detail => {
+        detail.style.display = "none";
+      });
+
+      // Show the selected crop's details
+      if (selectedCrop) {
+        document.getElementById(selectedCrop + 'Details').style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

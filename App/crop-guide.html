@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Crop-Specific Fertilization Guide</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      h2 {
+          text-align: center;
+          color: #2c3e50;
+      }
+      label {
+          display: block;
+          margin: 20px 0 10px;
+          font-size: 18px;
+          text-align: center;
+      }
+      select {
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto;
+          display: block;
+      }
+      button {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #2980b9;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin: 20px auto;
+          display: block;
+      }
+      button:hover {
+          background-color: #1c5980;
+      }
+      .result {
+          margin-top: 20px;
+          padding: 15px;
+          background: #ffffff;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          text-align: center;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      .details {
+          margin-top: 20px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background: #ffffff;
+          text-align: left;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+  </style>
+</head>
+<body>
+  <section class="crop-guide">
+    <h2>Crop-Specific Fertilization Guide</h2>
+    <label for="cropSelect">Select your crop to get fertilization recommendations:</label>
+   
+    <select id="cropSelect">
+      <option value="">--Select Crop--</option>
+      <option value="maize">Maize</option>
+      <option value="rice">Rice</option>
+      <option value="wheat">Wheat</option>
+      <option value="soybean">Soybean</option>
+      <option value="potato">Potato</option>
+      <option value="tomato">Tomato</option>
+      <option value="barley">Barley</option>
+      <option value="oats">Oats</option>
+      <option value="sorghum">Sorghum</option>
+      <option value="cotton">Cotton</option>
+      <option value="peanut">Peanut</option>
+      <option value="chickpea">Chickpea</option>
+    </select>
+   
+    <button onclick="getFertilizerRecommendations()">Get Recommendations</button>
+   
+    <div id="recommendation" class="result"></div>
+    <div id="details" class="details"></div>
+  </section>
+ 
+  <script>
+      const fertilizerData = {
+          maize: {
+              type: "NPK (10-10-10)",
+              amount: "200 kg per acre",
+              soil: "Well-drained, loamy soil with a pH of 5.8 to 7.0",
+              indicators: "pH, Nitrogen content, Organic matter",
+              pestManagement: "Use crop rotation and resistant varieties.",
+              waterManagement: "Ensure adequate irrigation during dry spells.",
+              nutrientPlan: "Apply fertilizer before planting and during growth stages.",
+              seasonalCalendar: "Plant in early spring and harvest in late summer.",
+              economicBenefits: "High yield potential and market demand."
+          },
+          rice: {
+              type: "DAP (18-46-0)",
+              amount: "250 kg per acre",
+              soil: "Clayey soil with good water retention, pH of 5.5 to 7.0",
+              indicators: "Water level, pH, and nutrient content.",
+              pestManagement: "Monitor for pests and use integrated pest management.",
+              waterManagement: "Flood fields during growing season.",
+              nutrientPlan: "Apply nitrogen-rich fertilizers post-planting.",
+              seasonalCalendar: "Transplant in monsoon and harvest in winter.",
+              economicBenefits: "Stable prices and high global demand."
+          },
+          wheat: {
+              type: "Urea (46-0-0)",
+              amount: "150 kg per acre",
+              soil: "Loamy soil with good drainage, pH of 6.0 to 7.0",
+              indicators: "pH, Phosphorus and Potassium levels.",
+              pestManagement: "Use disease-resistant seeds and fungicides.",
+              waterManagement: "Irrigate during dry periods.",
+              nutrientPlan: "Apply fertilizers at planting and tillering stages.",
+              seasonalCalendar: "Sow in fall and harvest in spring.",
+              economicBenefits: "High demand in food markets."
+          },
+          soybean: {
+              type: "NPK (10-20-10)",
+              amount: "120 kg per acre",
+              soil: "Well-drained, sandy loam with a pH of 6.0 to 6.8",
+              indicators: "Soil moisture, Nitrogen levels.",
+              pestManagement: "Use companion planting and natural predators.",
+              waterManagement: "Regular irrigation in dry spells.",
+              nutrientPlan: "Inoculate seeds with Rhizobium before planting.",
+              seasonalCalendar: "Plant in spring and harvest in late summer.",
+              economicBenefits: "Used for oil and protein, high market value."
+          },
+          potato: {
+              type: "Muriate of Potash (KCl)",
+              amount: "180 kg per acre",
+              soil: "Light, well-drained soil with a pH of 5.5 to 6.5",
+              indicators: "pH, Potassium levels.",
+              pestManagement: "Rotate crops to manage pests.",
+              waterManagement: "Maintain consistent moisture during growth.",
+              nutrientPlan: "Apply fertilizers at planting and before flowering.",
+              seasonalCalendar: "Plant in early spring and harvest in late summer.",
+              economicBenefits: "High yield and demand for processing."
+          },
+          tomato: {
+              type: "Calcium Nitrate",
+              amount: "150 kg per acre",
+              soil: "Rich, well-drained soil with a pH of 6.0 to 6.8",
+              indicators: "Soil fertility, pH, and moisture.",
+              pestManagement: "Monitor for pests and use traps.",
+              waterManagement: "Drip irrigation to reduce water waste.",
+              nutrientPlan: "Apply nitrogen and potassium during flowering.",
+              seasonalCalendar: "Plant in spring and harvest in late summer.",
+              economicBenefits: "High market price for fresh produce."
+          },
+          barley: {
+              type: "NPK (15-15-15)",
+              amount: "180 kg per acre",
+              soil: "Sandy loam with good drainage, pH of 6.0 to 7.0",
+              indicators: "Nitrogen, Phosphorus, and pH levels.",
+              pestManagement: "Use resistant varieties and monitor fields.",
+              waterManagement: "Irrigate during dry spells.",
+              nutrientPlan: "Apply fertilizers at planting and tillering.",
+              seasonalCalendar: "Sow in fall and harvest in summer.",
+              economicBenefits: "Used for livestock feed and brewing."
+          },
+          oats: {
+              type: "Urea (46-0-0)",
+              amount: "100 kg per acre",
+              soil: "Loamy soil with good drainage, pH of 6.0 to 7.5",
+              indicators: "Nitrogen content, moisture levels.",
+              pestManagement: "Use crop rotation to control pests.",
+              waterManagement: "Maintain consistent moisture.",
+              nutrientPlan: "Apply nitrogen fertilizers in spring.",
+              seasonalCalendar: "Sow in early spring and harvest in late summer.",
+              economicBenefits: "Increasing demand for healthy grains."
+          },
+          sorghum: {
+              type: "NPK (12-12-12)",
+              amount: "200 kg per acre",
+              soil: "Well-drained, sandy loam with a pH of 5.8 to 7.0",
+              indicators: "Soil texture, moisture, and nutrient levels.",
+              pestManagement: "Implement integrated pest management strategies.",
+              waterManagement: "Irrigate during dry periods.",
+              nutrientPlan: "Apply fertilizers before planting.",
+              seasonalCalendar: "Plant in spring and harvest in late summer.",
+              economicBenefits: "Drought-resistant and high yield potential."
+          },
+          cotton: {
+              type: "Potassium Nitrate",
+              amount: "150 kg per acre",
+              soil: "Sandy loam or clayey soil, pH of 5.5 to 7.0",
+              indicators: "Soil fertility, moisture, and pest presence.",
+              pestManagement: "Monitor for pests and use biological controls.",
+              waterManagement: "Irrigate regularly, especially during flowering.",
+              nutrientPlan: "Apply potassium and nitrogen before flowering.",
+              seasonalCalendar: "Plant in spring and harvest in fall.",
+              economicBenefits: "High demand in textile industry."
+          },
+          peanut: {
+              type: "NPK (8-24-24)",
+              amount: "100 kg per acre",
+              soil: "Well-drained, sandy soil with a pH of 5.5 to 6.5",
+              indicators: "Soil pH and nutrient levels.",
+              pestManagement: "Use cover crops to manage pests.",
+              waterManagement: "Maintain consistent soil moisture.",
+              nutrientPlan: "Inoculate seeds and apply phosphorus fertilizers.",
+              seasonalCalendar: "Plant in spring and harvest in late summer.",
+              economicBenefits: "High protein content and market value."
+          },
+          chickpea: {
+              type: "Single Super Phosphate (SSP)",
+              amount: "120 kg per acre",
+              soil: "Well-drained, loamy soil with a pH of 6.0 to 7.0",
+              indicators: "Soil nutrient levels and moisture.",
+              pestManagement: "Rotate crops and monitor pest populations.",
+              waterManagement: "Provide adequate irrigation during dry spells.",
+              nutrientPlan: "Apply phosphorus before planting.",
+              seasonalCalendar: "Plant in early spring and harvest in late summer.",
+              economicBenefits: "High demand for protein-rich food."
+          }
+      };
+ 
+      function getFertilizerRecommendations() {
+          const cropSelect = document.getElementById('cropSelect');
+          const selectedCrop = cropSelect.value;
+          const recommendationDiv = document.getElementById('recommendation');
+          const detailsDiv = document.getElementById('details');
+ 
+          if (selectedCrop) {
+              const fertilizerInfo = fertilizerData[selectedCrop];
+              recommendationDiv.innerHTML = `
+                  <h3>Fertilization Recommendation for ${selectedCrop.charAt(0).toUpperCase() + selectedCrop.slice(1)}</h3>
+                  <p>Recommended Fertilizer: <strong>${fertilizerInfo.type}</strong></p>
+                  <p>Amount: <strong>${fertilizerInfo.amount}</strong></p>
+                  <p>Suitable Soil: <strong>${fertilizerInfo.soil}</strong></p>
+              `;
+ 
+              detailsDiv.innerHTML = `
+                  <h3>Crop Management Details</h3>
+                  <p><strong>Soil Health Indicators:</strong> ${fertilizerInfo.indicators}</p>
+                  <p><strong>Pest and Disease Management:</strong> ${fertilizerInfo.pestManagement}</p>
+                  <p><strong>Water Management Techniques:</strong> ${fertilizerInfo.waterManagement}</p>
+                  <p><strong>Nutrient Management Plans:</strong> ${fertilizerInfo.nutrientPlan}</p>
+                  <p><strong>Seasonal Calendar:</strong> ${fertilizerInfo.seasonalCalendar}</p>
+                  <p><strong>Economic Benefits:</strong> ${fertilizerInfo.economicBenefits}</p>
+              `;
+          } else {
+              recommendationDiv.innerHTML = '';
+              detailsDiv.innerHTML = '';
+              alert('Please select a crop to get recommendations.');
+          }
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Water Management Techniques</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          display: flex; /* Use flexbox for alignment */
+          align-items: center; /* Center items vertically */
+          justify-content: center; /* Center items horizontally */
+          background-color: #4CAF50; /* Green background */
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+      h1 {
+          color: white;
+          margin-left: 20px; /* Space between image and text */
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      section {
+          margin-bottom: 20px;
+          padding: 15px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      a {
+          color: #2980b9;
+          text-decoration: underline;
+      }
+      a:hover {
+          text-decoration: none;
+      }
+      img {
+          max-width: 100px; /* Adjust image size as needed */
+          height: auto;
+      }
+      ul {
+          list-style-type: none;
+          padding-left: 0;
+      }
+      li {
+          margin: 5px 0;
+      }
+      /* Dropdown styles */
+      .dropdown-container {
+          margin-top: 20px;
+      }
+      .dropdown {
+          width: 100%;
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          font-size: 16px;
+      }
+      .crop-details {
+          margin-top: 10px;
+          padding: 10px;
+          background-color: #e9e9e9;
+          border-radius: 4px;
+          display: none; /* Hide by default */
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="water-management-icon.png" alt="Water Management Techniques" style="max-width: 100px; height: auto;">
+    <h1>Water Management Techniques</h1>
+  </header>
+  
+  <section>
+    <h2>Understanding Water Management</h2>
+    <p>Utilizing efficient irrigation methods is crucial for conserving water and maximizing crop yield. Implementing rainwater harvesting systems can optimize water usage and reduce dependency on traditional sources.</p>
+  </section>
+
+  <section>
+    <h2>Key Techniques for Efficient Water Management</h2>
+    
+    <h3>1. Drip Irrigation</h3>
+    <p>Drip irrigation delivers water directly to the plant roots, minimizing evaporation and runoff. Benefits include:</p>
+    <ul>
+      <li>Reduced water usage by up to 50%.</li>
+      <li>Lower weed growth due to targeted watering.</li>
+      <li>Improved crop yield and quality.</li>
+    </ul>
+
+    <h3>2. Sprinkler Systems</h3>
+    <p>Sprinkler irrigation mimics natural rainfall, distributing water evenly across crops. Key advantages include:</p>
+    <ul>
+      <li>Flexibility in application over large areas.</li>
+      <li>Can be adjusted for varying crop needs.</li>
+      <li>Helps reduce soil erosion compared to traditional methods.</li>
+    </ul>
+
+    <h3>3. Rainwater Harvesting</h3>
+    <p>Collecting and storing rainwater can be an effective way to supplement irrigation needs. Important aspects include:</p>
+    <ul>
+      <li>Installing rain barrels or cisterns to capture runoff.</li>
+      <li>Using filters to keep water clean for irrigation.</li>
+      <li>Reducing the impact on local water supplies.</li>
+    </ul>
+
+    <h3>4. Regular Maintenance</h3>
+    <p>Regularly checking for leaks and maintaining irrigation systems is essential to prevent water waste. Practices include:</p>
+    <ul>
+      <li>Inspecting hoses and connections for damage.</li>
+      <li>Cleaning filters and emitters regularly.</li>
+      <li>Monitoring water pressure to ensure efficiency.</li>
+    </ul>
+  </section>
+
+  <section class="dropdown-container">
+    <h2>Select a Crop</h2>
+    <label for="cropSelect">Select a Crop:</label>
+    <select id="cropSelect" class="dropdown" onchange="showCropDetails()">
+      <option value="">-- Select a Crop --</option>
+      <option value="maize">Maize</option>
+      <option value="rice">Rice</option>
+      <option value="wheat">Wheat</option>
+      <option value="soybean">Soybean</option>
+      <option value="potato">Potato</option>
+      <option value="tomato">Tomato</option>
+      <option value="barley">Barley</option>
+      <option value="oats">Oats</option>
+      <option value="sorghum">Sorghum</option>
+      <option value="cotton">Cotton</option>
+      <option value="peanut">Peanut</option>
+      <option value="chickpea">Chickpea</option>
+    </select>
+
+    <div id="cropDetails" class="crop-details"></div>
+  </section>
+
+  <section>
+    <p>Utilize efficient irrigation methods, such as drip or sprinkler systems, to conserve water. Implement rainwater harvesting systems to optimize water usage. Regularly check for leaks in irrigation systems to prevent water waste.</p>
+  </section>
+
+  <section>
+    <a href="header.html">Back to Home</a>
+  </section>
+
+  <script>
+    function showCropDetails() {
+      const cropSelect = document.getElementById('cropSelect');
+      const detailsDiv = document.getElementById('cropDetails');
+      const selectedCrop = cropSelect.value;
+
+      const cropInfo = {
+        maize: {
+          waterNeeds: "Requires consistent moisture; best irrigation is drip or center pivot.",
+          irrigationMethods: "Recommended methods: Drip irrigation, center pivot irrigation."
+        },
+        rice: {
+          waterNeeds: "Needs standing water for optimal growth; consider wetland management.",
+          irrigationMethods: "Recommended methods: Flood irrigation, surface irrigation."
+        },
+        wheat: {
+          waterNeeds: "Requires moderate irrigation; ensure proper drainage to avoid root rot.",
+          irrigationMethods: "Recommended methods: Sprinkler irrigation, furrow irrigation."
+        },
+        soybean: {
+          waterNeeds: "Requires well-drained soil; avoid overwatering.",
+          irrigationMethods: "Recommended methods: Drip irrigation, sprinkler irrigation."
+        },
+        potato: {
+          waterNeeds: "Needs consistent moisture; use drip irrigation for better yield.",
+          irrigationMethods: "Recommended methods: Drip irrigation, furrow irrigation."
+        },
+        tomato: {
+          waterNeeds: "Drip irrigation is preferred to maintain soil moisture levels.",
+          irrigationMethods: "Recommended methods: Drip irrigation, subsurface irrigation."
+        },
+        barley: {
+          waterNeeds: "Requires moderate irrigation, especially during grain filling.",
+          irrigationMethods: "Recommended methods: Sprinkler irrigation, flood irrigation."
+        },
+        oats: {
+          waterNeeds: "Needs ample moisture during germination and early growth.",
+          irrigationMethods: "Recommended methods: Drip irrigation, furrow irrigation."
+        },
+        sorghum: {
+          waterNeeds: "Drought-tolerant; requires less water but benefits from supplemental irrigation during dry spells.",
+          irrigationMethods: "Recommended methods: Drip irrigation, flood irrigation."
+        },
+        cotton: {
+          waterNeeds: "Needs adequate moisture during flowering and boll formation.",
+          irrigationMethods: "Recommended methods: Drip irrigation, sprinkler irrigation."
+        },
+        peanut: {
+          waterNeeds: "Requires well-drained soils; avoid waterlogging.",
+          irrigationMethods: "Recommended methods: Drip irrigation, furrow irrigation."
+        },
+        chickpea: {
+          waterNeeds: "Drought-resistant; benefits from water conservation practices.",
+          irrigationMethods: "Recommended methods: Drip irrigation, rainfed."
+        },
+      };
+
+      // Show relevant information based on selection
+      if (selectedCrop) {
+        const info = cropInfo[selectedCrop];
+        detailsDiv.innerHTML = `
+          <h3>${selectedCrop.charAt(0).toUpperCase() + selectedCrop.slice(1)} Water Needs</h3>
+          <p>${info.waterNeeds}</p>
+          <h4>Irrigation Methods</h4>
+          <p>${info.irrigationMethods}</p>
+        `;
+        detailsDiv.style.display = 'block'; // Show details
+      } else {
+        detailsDiv.style.display = 'none'; // Hide details if not selected
+      }
+    }
+  </script>
+</body>
+</html>

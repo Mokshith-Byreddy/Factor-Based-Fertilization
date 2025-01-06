@@ -1,0 +1,244 @@
+css /* General body styling */
+/* Example: If the header is inside a class or ID */
+#main-container header {
+    background-color: #4CAF50;
+}
+ 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8; /* Light blue background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background: url('https://pathtotheplate.tamu.edu/files/2019/04/crop-cropland-farm-1509607.jpg') no-repeat center center fixed; /* Sample background image */
+    background-size: cover; /* Ensures the background covers the entire viewport */
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+}
+
+header .logo img {
+    width: 50px;
+}
+
+header h1 {
+    margin: 0;
+    padding-left: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Home page styling */
+.home {
+    padding: 40px;
+    text-align: center;
+}
+
+.home h2 {
+    color: #007BFF; /* Blue heading */
+}
+
+.home .quick-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.home .link-box {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 0 10px;
+    width: 150px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.home .link-box:hover {
+    background-color: #45a049;
+}
+
+.home .featured {
+    margin-top: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home .featured h3 {
+    color: #4CAF50; /* Green heading */
+}
+
+/* Soil and crop guide tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+}
+
+td {
+    background-color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for alternate rows */
+}
+
+/* Crop guide links */
+.crop-guide ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.crop-guide ul li {
+    padding: 15px;
+    background-color: #007BFF; /* Blue background */
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.crop-guide ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.crop-guide ul li:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Calculator form */
+.calculator {
+    padding: 40px;
+    text-align: center;
+}
+
+.calculator form {
+    display: inline-block;
+    text-align: left;
+}
+
+.calculator label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.calculator select, .calculator input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.calculator button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.calculator button:hover {
+    background-color: #45a049;
+}
+
+/* Sustainable Practices */
+.sustainable {
+    padding: 40px;
+}
+
+.sustainable h2 {
+    color: #4CAF50; /* Green heading */
+}
+
+.sustainable p, h3 {
+    padding: 10px 0;
+}
+
+/* FAQ section */
+.faq {
+    padding: 40px;
+}
+
+.faq h2 {
+    color: #007BFF; /* Blue heading */
+}
+
+.faq-item {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 20px 0;
+    border-radius: 8px;
+    border-left: 5px solid #4CAF50; /* Green border */
+}
+
+.faq-item h3 {
+    color: #4CAF50; /* Green heading */
+}
+
+/* Footer styling (optional) */
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

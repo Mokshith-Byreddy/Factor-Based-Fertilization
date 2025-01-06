@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Protection from External Factors</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          background-color: #4CAF50;
+          padding: 20px;
+          color: white;
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      section {
+          margin-top: 20px;
+          padding: 15px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      .crop-info {
+          display: none;
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Crop Protection from External Factors</h1>
+    <p>Select a crop to see its potential external threats and prevention methods</p>
+  </header>
+
+  <section>
+    <label for="crop-select"><strong>Select Crop:</strong></label>
+    <select id="crop-select" onchange="showCropInfo()">
+      <option value="">--Choose a Crop--</option>
+      <option value="maize">Maize</option>
+      <option value="rice">Rice</option>
+      <option value="wheat">Wheat</option>
+      <option value="potato">Potato</option>
+      <option value="soybean">Soybean</option>
+      <option value="tomato">Tomato</option>
+      <option value="cotton">Cotton</option>
+      <option value="sugarcane">Sugarcane</option>
+    </select>
+
+    <!-- Maize Information -->
+    <div id="maize" class="crop-info">
+      <h2>Maize</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Birds:</strong> Use scarecrows or reflective tape to keep birds away.</li>
+        <li><strong>Insects:</strong> Apply insecticidal soap and encourage natural predators.</li>
+        <li><strong>Weeds:</strong> Use mulching and selective herbicides to control weed growth.</li>
+      </ul>
+    </div>
+
+    <!-- Rice Information -->
+    <div id="rice" class="crop-info">
+      <h2>Rice</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Insects:</strong> Use pheromone traps and natural insect predators like spiders.</li>
+        <li><strong>Snails:</strong> Use snail traps and keep water levels controlled.</li>
+        <li><strong>Birds:</strong> Netting or scare devices help to deter birds from rice fields.</li>
+      </ul>
+    </div>
+
+    <!-- Wheat Information -->
+    <div id="wheat" class="crop-info">
+      <h2>Wheat</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Weeds:</strong> Use herbicides and crop rotation to prevent weed competition.</li>
+        <li><strong>Insects:</strong> Use insect-resistant wheat varieties and insect traps.</li>
+        <li><strong>Rodents:</strong> Install fencing and use rodent traps to protect crops.</li>
+      </ul>
+    </div>
+
+    <!-- Potato Information -->
+    <div id="potato" class="crop-info">
+      <h2>Potato</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Insects:</strong> Apply neem oil or other organic insecticides for pest control.</li>
+        <li><strong>Fungal Diseases:</strong> Use fungicides and practice crop rotation.</li>
+        <li><strong>Weeds:</strong> Mulch around plants to control weeds effectively.</li>
+      </ul>
+    </div>
+
+    <!-- Soybean Information -->
+    <div id="soybean" class="crop-info">
+      <h2>Soybean</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Aphids:</strong> Introduce ladybugs and use neem oil.</li>
+        <li><strong>Fungal Infections:</strong> Use resistant varieties and fungicides when needed.</li>
+        <li><strong>Weeds:</strong> Use pre-emergence herbicides and tilling.</li>
+      </ul>
+    </div>
+
+    <!-- Tomato Information -->
+    <div id="tomato" class="crop-info">
+      <h2>Tomato</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Whiteflies:</strong> Use yellow sticky traps and insecticidal soap.</li>
+        <li><strong>Blight:</strong> Apply fungicides and practice crop rotation.</li>
+        <li><strong>Nematodes:</strong> Use resistant varieties and solarization.</li>
+      </ul>
+    </div>
+
+    <!-- Cotton Information -->
+    <div id="cotton" class="crop-info">
+      <h2>Cotton</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Weevils:</strong> Use pheromone traps and insecticides.</li>
+        <li><strong>Fungal Diseases:</strong> Ensure proper drainage and use fungicides.</li>
+        <li><strong>Insects:</strong> Introduce beneficial insects like ladybugs.</li>
+      </ul>
+    </div>
+
+    <!-- Sugarcane Information -->
+    <div id="sugarcane" class="crop-info">
+      <h2>Sugarcane</h2>
+      <p><strong>External Factors:</strong></p>
+      <ul>
+        <li><strong>Borers:</strong> Apply biological control agents and insecticides.</li>
+        <li><strong>Weeds:</strong> Use herbicides and regular cultivation.</li>
+        <li><strong>Fungal Infections:</strong> Apply appropriate fungicides and ensure good drainage.</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    function showCropInfo() {
+      // Hide all crop info sections
+      document.querySelectorAll('.crop-info').forEach(info => {
+        info.style.display = 'none';
+      });
+
+      // Get the selected crop value
+      const selectedCrop = document.getElementById('crop-select').value;
+
+      // Show the selected crop info
+      if (selectedCrop) {
+        document.getElementById(selectedCrop).style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nutrient Management Plans</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          display: flex; /* Use flexbox for alignment */
+          align-items: center; /* Center items vertically */
+          justify-content: center; /* Center items horizontally */
+          background-color: #4CAF50; /* Green background */
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+      h1 {
+          color: white;
+          margin-left: 20px; /* Space between image and text */
+      }
+      section {
+          margin-bottom: 20px;
+          padding: 15px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      a {
+          color: #2980b9;
+          text-decoration: underline;
+      }
+      a:hover {
+          text-decoration: none;
+      }
+      img {
+          max-width: 100px; /* Adjust image size as needed */
+          height: auto;
+      }
+      ul {
+          list-style-type: none;
+          padding-left: 0;
+      }
+      li {
+          margin: 5px 0;
+      }
+      /* Dropdown styles */
+      .dropdown-container {
+          margin-top: 20px;
+      }
+      .dropdown {
+          width: 100%;
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          font-size: 16px;
+      }
+      .crop-details {
+          margin-top: 10px;
+          padding: 10px;
+          background-color: #e9e9e9;
+          border-radius: 4px;
+          display: none; /* Hide by default */
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="nutrient-management-icon.png" alt="Nutrient Management Plans" style="max-width: 100px; height: auto;">
+    <h1>Nutrient Management Plans</h1>
+  </header>
+  
+  <section>
+    <h2>Understanding Nutrient Management</h2>
+    <p>Nutrient management plans help farmers apply the right amount of nutrients at the right time. By assessing the soil nutrient status and matching it with crop needs, farmers can reduce costs and prevent over-fertilization.</p>
+    <p>Effective strategies include soil testing, understanding crop nutrient requirements, and choosing the right fertilizers.</p>
+  </section>
+
+  <section class="dropdown-container">
+    <h2>Select a Crop</h2>
+    <label for="cropSelect">Choose a crop to see its nutrient management plan:</label>
+    <select id="cropSelect" class="dropdown" onchange="showCropDetails()">
+      <option value="">-- Select a Crop --</option>
+      <option value="maize">Maize</option>
+      <option value="rice">Rice</option>
+      <option value="wheat">Wheat</option>
+      <option value="soybean">Soybean</option>
+      <option value="potato">Potato</option>
+      <option value="tomato">Tomato</option>
+      <option value="barley">Barley</option>
+      <option value="oats">Oats</option>
+      <option value="sorghum">Sorghum</option>
+      <option value="cotton">Cotton</option>
+      <option value="peanut">Peanut</option>
+      <option value="chickpea">Chickpea</option>
+    </select>
+
+    <div id="cropDetails" class="crop-details"></div>
+  </section>
+
+  <section>
+    <a href="header.html">Back to Home</a>
+  </section>
+
+  <script>
+    function showCropDetails() {
+      const cropSelect = document.getElementById('cropSelect');
+      const detailsDiv = document.getElementById('cropDetails');
+      const selectedCrop = cropSelect.value;
+
+      // Nutrient management details for each crop
+      const cropInfo = {
+        maize: {
+          requirements: "High nitrogen and moderate phosphorous requirements, especially during vegetative stages.",
+          strategies: `
+            <ul>
+              <li>Apply nitrogen fertilizer in split doses: early growth, mid-season, and pre-flowering.</li>
+              <li>Use phosphorus-rich fertilizers during planting for root development.</li>
+              <li>Consider organic matter or compost application to enhance soil health.</li>
+            </ul>`
+        },
+        rice: {
+          requirements: "Needs nitrogen, phosphorus, and potassium with additional micronutrients like zinc.",
+          strategies: `
+            <ul>
+              <li>Apply nitrogen in split doses, especially during tillering and panicle initiation stages.</li>
+              <li>Incorporate organic manure or green manure to improve soil structure.</li>
+              <li>Check for zinc deficiency and apply zinc sulfate if needed.</li>
+            </ul>`
+        },
+        wheat: {
+          requirements: "Requires balanced NPK, with special focus on nitrogen and sulfur.",
+          strategies: `
+            <ul>
+              <li>Apply nitrogen in two stages: before sowing and at the tillering stage.</li>
+              <li>Use sulfur-rich fertilizers to improve grain quality.</li>
+              <li>Ensure moderate phosphorus at planting for root growth.</li>
+            </ul>`
+        },
+        // Additional crop details
+        soybean: {
+          requirements: "Moderate nitrogen with added potassium and calcium for seed formation.",
+          strategies: `
+            <ul>
+              <li>Use potassium fertilizer during early growth for root strength.</li>
+              <li>Inoculate with Rhizobium bacteria to enhance nitrogen fixation.</li>
+              <li>Apply calcium at pod setting to improve yield.</li>
+            </ul>`
+        },
+        potato: {
+          requirements: "High potassium and moderate phosphorus, with controlled nitrogen.",
+          strategies: `
+            <ul>
+              <li>Apply potassium before planting to improve tuber size.</li>
+              <li>Limit nitrogen to prevent excessive foliage growth.</li>
+              <li>Use phosphorus fertilizers to enhance root and tuber development.</li>
+            </ul>`
+        },
+        tomato: {
+          requirements: "High potassium and calcium; balanced nitrogen.",
+          strategies: `
+            <ul>
+              <li>Apply calcium nitrate to prevent blossom-end rot.</li>
+              <li>Use potassium-based fertilizers to enhance fruit quality.</li>
+              <li>Provide balanced nitrogen for foliage and fruit growth.</li>
+            </ul>`
+        },
+        cotton: {
+          requirements: "High nitrogen and potassium requirements; moderate phosphorus.",
+          strategies: `
+            <ul>
+              <li>Apply nitrogen fertilizer in multiple doses throughout growth stages.</li>
+              <li>Potassium helps improve fiber quality; apply potassium sulfate if needed.</li>
+              <li>Incorporate phosphorus during planting for root strength.</li>
+            </ul>`
+        },
+        // Add additional crop information here as needed
+      };
+
+      if (selectedCrop && cropInfo[selectedCrop]) {
+        const info = cropInfo[selectedCrop];
+        detailsDiv.innerHTML = `
+          <h3>${selectedCrop.charAt(0).toUpperCase() + selectedCrop.slice(1)} Nutrient Management</h3>
+          <p><strong>Requirements:</strong> ${info.requirements}</p>
+          <p><strong>Management Strategies:</strong></p> ${info.strategies}
+        `;
+        detailsDiv.style.display = 'block'; // Show details
+      } else {
+        detailsDiv.style.display = 'none'; // Hide details if no crop is selected
+      }
+    }
+  </script>
+</body>
+</html>

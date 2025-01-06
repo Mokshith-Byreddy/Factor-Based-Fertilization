@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Crop Rotation Benefits</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f9;
+          color: #333;
+      }
+      header {
+          background-color: #4CAF50;
+          padding: 10px;
+          color: white;
+          text-align: center;
+      }
+      section {
+          margin: 20px 0;
+          padding: 20px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+          color: #4CAF50;
+      }
+      a {
+          color: #2980b9;
+          text-decoration: underline;
+          cursor: pointer;
+      }
+      .crop-dropdown {
+          margin: 10px 0;
+      }
+      .crop-dropdown button {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          width: 100%;
+          text-align: left;
+          font-size: 16px;
+      }
+      .crop-details h3 {
+  color: #4CAF50; /* Keep the green color */
+  margin-bottom: 10px; /* Adjust the spacing below the heading */
+  display: inline-block; /* Ensure the underline only applies to the content */
+  padding-bottom: 5px; /* Add some padding below the text */
+  border-bottom: 2px solid #4CAF50; /* Optional: to give a green underline directly below the text */
+}
+
+  </style>
+  <script>
+      function toggleDetails(crop) {
+          var details = document.getElementById(crop + "-details");
+          if (details.style.display === "block") {
+              details.style.display = "none";
+          } else {
+              details.style.display = "block";
+          }
+      }
+  </script>
+</head>
+<body>
+    <header>
+        <img src="crop-rotation-icon.png" alt="Crop rotation Techniques" style="max-width: 100px; height: auto;">
+        <h1>Crop Rotation Techniques</h1>
+      </header>
+  <section>
+    <p>Crop rotation is a sustainable practice that enhances soil fertility, reduces pest and disease pressure, and improves overall crop yields.</p>
+
+    <h2>Benefits of Crop Rotation</h2>
+    <ul>
+      <li>Improves soil structure and fertility by alternating deep and shallow-rooted crops.</li>
+      <li>Reduces the buildup of pests and diseases specific to certain crops.</li>
+      <li>Enhances nutrient cycling, reducing the need for chemical fertilizers.</li>
+      <li>Improves soil moisture retention and reduces erosion.</li>
+      <li>Increases biodiversity and ecosystem stability.</li>
+    </ul>
+
+    <h2>Crop-Specific Rotation Practices</h2>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('maize')">Maize</button>
+      <div id="maize-details" class="crop-details">
+        <p>Rotate with legumes such as soybeans to enhance soil nitrogen levels and reduce pest incidence.</p>
+        <p><strong>Benefits:</strong> Improves nitrogen fixation, leading to better soil health and higher maize yields.</p>
+        <p><strong>Considerations:</strong> Avoid following maize with other cereals to minimize disease risks.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('rice')">Rice</button>
+      <div id="rice-details" class="crop-details">
+        <p>Alternating rice with dry crops like mustard can help manage water and nutrient availability.</p>
+        <p><strong>Benefits:</strong> Enhances soil moisture retention and prevents nutrient depletion.</p>
+        <p><strong>Considerations:</strong> Maintain proper water management practices to ensure rice health.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('wheat')">Wheat</button>
+      <div id="wheat-details" class="crop-details">
+        <p>Rotate with pulses like chickpeas to break disease cycles and improve soil fertility.</p>
+        <p><strong>Benefits:</strong> Increases soil nutrient levels and reduces the need for chemical fertilizers.</p>
+        <p><strong>Considerations:</strong> Ensure proper weed management during the rotation period.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('soybean')">Soybean</button>
+      <div id="soybean-details" class="crop-details">
+        <p>Following soybeans with corn helps utilize nitrogen fixed by the soybeans for the subsequent crop.</p>
+        <p><strong>Benefits:</strong> Enhances soil fertility and supports healthier corn growth.</p>
+        <p><strong>Considerations:</strong> Monitor for pests and diseases after soybean harvest.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('potato')">Potato</button>
+      <div id="potato-details" class="crop-details">
+        <p>Rotate with cereals like barley to reduce the risk of diseases like blight.</p>
+        <p><strong>Benefits:</strong> Helps manage soil-borne diseases and improves potato quality.</p>
+        <p><strong>Considerations:</strong> Avoid planting potatoes after other solanaceous crops.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('tomato')">Tomato</button>
+      <div id="tomato-details" class="crop-details">
+        <p>Avoid planting tomatoes after other nightshades (e.g., peppers, eggplants) to minimize pest pressure.</p>
+        <p><strong>Benefits:</strong> Reduces the risk of common diseases and pests associated with nightshades.</p>
+        <p><strong>Considerations:</strong> Use crop rotation to enhance soil health and reduce pathogen buildup.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('barley')">Barley</button>
+      <div id="barley-details" class="crop-details">
+        <p>Use a rotation with legumes to enhance soil nitrogen and reduce weed pressure.</p>
+        <p><strong>Benefits:</strong> Improves overall soil fertility and reduces competition from weeds.</p>
+        <p><strong>Considerations:</strong> Monitor soil moisture levels for optimal barley growth.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('oats')">Oats</button>
+      <div id="oats-details" class="crop-details">
+        <p>Rotate with legumes or clovers to improve soil health and fertility.</p>
+        <p><strong>Benefits:</strong> Enhances nutrient cycling and reduces reliance on synthetic fertilizers.</p>
+        <p><strong>Considerations:</strong> Maintain proper drainage to avoid waterlogging.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('sorghum')">Sorghum</button>
+      <div id="sorghum-details" class="crop-details">
+        <p>Can be rotated with soybean or peanuts to manage pests and diseases.</p>
+        <p><strong>Benefits:</strong> Supports soil structure and promotes biodiversity in cropping systems.</p>
+        <p><strong>Considerations:</strong> Ensure adequate pest monitoring during rotation periods.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('cotton')">Cotton</button>
+      <div id="cotton-details" class="crop-details">
+        <p>Alternating with grains can help reduce pests and manage nutrient cycling.</p>
+        <p><strong>Benefits:</strong> Minimizes pest populations and improves soil fertility.</p>
+        <p><strong>Considerations:</strong> Rotate cotton with non-host crops to disrupt pest life cycles.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('peanut')">Peanut</button>
+      <div id="peanut-details" class="crop-details">
+        <p>Rotating with corn can enhance soil fertility through nitrogen fixation.</p>
+        <p><strong>Benefits:</strong> Improves soil health and crop yield of the following corn crop.</p>
+        <p><strong>Considerations:</strong> Ensure proper crop management to avoid disease spread.</p>
+      </div>
+    </div>
+
+    <div class="crop-dropdown">
+      <button onclick="toggleDetails('chickpea')">Chickpea</button>
+      <div id="chickpea-details" class="crop-details">
+        <p>Rotate with cereals to optimize soil moisture and nutrient management.</p>
+        <p><strong>Benefits:</strong> Enhances soil fertility and minimizes competition for resources.</p>
+        <p><strong>Considerations:</strong> Monitor soil conditions to ensure proper chickpea growth.</p>
+      </div>
+    </div>
+
+    <p>Implementing crop rotation can lead to improved yields and reduced dependency on chemical inputs.</p>
+    <a href="header.html">Back to Home</a>
+  </section>
+</body>
+</html>
